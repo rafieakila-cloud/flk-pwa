@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#4a1520">
+<meta name="description" content="FLK — Fakultas Lisensi Kreatif. Daftarkan karaktermu, penuhi syarat lisensinya, terbitkan lisensimu sendiri, lalu salin & gunakan di karyamu.">
+<title>FLK — Fakultas Lisensi Kreatif</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="#/">
+    <span class="seal" id="seal-top"></span>
+    <span class="brand-text">
+      <span class="brand-name">FLK</span>
+      <span class="brand-sub">Fakultas Lisensi Kreatif</span>
+    </span>
+  </a>
+  <nav class="nav">
+    <a href="#/" data-nav="home">Beranda</a>
+    <a href="#/galeri" data-nav="galeri">Galeri Karakter</a>
+    <a href="#/terbit" data-nav="terbit">Terbitkan Lisensi</a>
+    <a href="#/arsip" data-nav="arsip">Arsip Saya</a>
+    <a href="#/buat" data-nav="buat">Usul Karakter</a>
+  </nav>
+</header>
+
+<main>
+  <!-- ============ BERANDA ============ -->
+  <section class="view" id="view-home">
+    <div class="hero">
+      <div class="hero-copy">
+        <div class="hero-kicker">Fakultas Lisensi Kreatif · Est. 2026</div>
+        <h1 class="hero-title">Setiap karya<br>layak punya <em>lisensi</em>.</h1>
+        <p class="hero-sub">Pilih karakter FLK, penuhi syarat-syaratnya, dan karyamu akan terbit di bawah lisensi resmi Fakultas — lengkap dengan teks lisensi dan badge yang bisa langsung kamu salin ke karyamu.</p>
+        <div class="hero-actions">
+          <a class="btn btn-gold" href="#/galeri">Lihat Galeri Karakter</a>
+          <a class="btn btn-ghost" href="#/terbit">Langsung Terbitkan</a>
+        </div>
+      </div>
+      <div class="hero-seal" id="seal-hero"></div>
+    </div>
+
+    <div class="section-divider"><span>Cara Kerja</span></div>
+    <div class="steps">
+      <div class="step"><div class="step-num">I</div><div class="step-title">Pilih Karakter</div><div class="step-sub">Setiap karakter FLK adalah jiwa dari sebuah lisensi — sifat, aturan, dan batasnya berbeda-beda.</div></div>
+      <div class="step"><div class="step-num">II</div><div class="step-title">Penuhi Syarat</div><div class="step-sub">Centang semua persyaratan lisensi. Fakultas tidak main-main soal ini.</div></div>
+      <div class="step"><div class="step-num">III</div><div class="step-title">Terbitkan</div><div class="step-sub">Lisensi terbit dengan nomor resmi FLK-2026. Salin teksnya ke karyamu.</div></div>
+    </div>
+
+    <div class="section-divider"><span>Kanon Fakultas</span></div>
+    <div class="kanon">
+      <div class="kanon-item">Lisensi adalah penghormatan, bukan belenggu.</div>
+      <div class="kanon-item">Kredit asli wajib dilestarikan, sebebas apa pun lisensinya.</div>
+      <div class="kanon-item">Lisensi FLK bukan nasihat hukum — ini amanat seni.</div>
+    </div>
+  </section>
+
+  <!-- ============ GALERI ============ -->
+  <section class="view hidden" id="view-galeri">
+    <div class="page-head">
+      <h2>Galeri Karakter</h2>
+      <p>Enam karakter kanon Fakultas. Klik untuk menelusuri syarat &amp; terbitkan lisensinya.</p>
+    </div>
+    <div class="galeri-grid" id="galeri-grid"></div>
+  </section>
+
+  <!-- ============ TERBITKAN (WIZARD) ============ -->
+  <section class="view hidden" id="view-terbit">
+    <div class="page-head">
+      <h2>Terbitkan Lisensi</h2>
+      <p>Langkah demi langkah. Fakultas mengawasi.</p>
+    </div>
+
+    <!-- langkah 1: pilih karakter -->
+    <div class="wizard-step" id="ws-1">
+      <div class="ws-title"><span class="ws-num">1</span>Pilih Karakter</div>
+      <div class="ws-grid" id="ws-karakter"></div>
+    </div>
+
+    <!-- langkah 2: syarat -->
+    <div class="wizard-step hidden" id="ws-2">
+      <div class="ws-title"><span class="ws-num">2</span>Syarat Lisensi — <span id="ws-2-nama"></span></div>
+      <div class="syarat-box" id="ws-syarat"></div>
+      <div class="ws-actions"><button class="btn btn-ghost" id="ws-back-1">Kembali</button><button class="btn btn-gold" id="ws-next-2" disabled>Lanjut</button></div>
+    </div>
+
+    <!-- langkah 3: identitas -->
+    <div class="wizard-step hidden" id="ws-3">
+      <div class="ws-title"><span class="ws-num">3</span>Pendaftar &amp; Karya</div>
+      <div class="form-grid">
+        <label>Nama pendaftar
+          <input type="text" id="f-pendaftar" placeholder="Nama lengkap / nama pena" autocomplete="off">
+        </label>
+        <label>Judul karya
+          <input type="text" id="f-judul" placeholder="mis. Novel 'Senja di Fakultas'" autocomplete="off">
+        </label>
+        <label>Tahun
+          <input type="text" id="f-tahun" value="2026" autocomplete="off">
+        </label>
+      </div>
+      <div class="ws-actions"><button class="btn btn-ghost" id="ws-back-2">Kembali</button><button class="btn btn-gold" id="ws-terbit">Terbitkan Lisensi</button></div>
+    </div>
+
+    <!-- hasil -->
+    <div class="wizard-step hidden" id="ws-result">
+      <div class="result-head">
+        <div class="result-seal" id="result-seal"></div>
+        <div>
+          <div class="result-kicker">Lisensi FLK Terbit</div>
+          <div class="result-no" id="result-no"></div>
+        </div>
+      </div>
+      <div class="result-badge" id="result-badge"></div>
+      <div class="result-box">
+        <div class="result-box-title">Teks Lisensi — tempel di karyamu</div>
+        <pre class="result-text" id="result-text"></pre>
+        <div class="ws-actions">
+          <button class="btn btn-gold" id="btn-copy-text">Salin Teks Lisensi</button>
+          <button class="btn btn-ghost" id="btn-copy-md">Salin Badge (Markdown)</button>
+          <button class="btn btn-ghost" id="btn-download">Unduh .txt</button>
+        </div>
+      </div>
+      <div class="ws-actions"><a class="btn btn-ghost" href="#/arsip">Lihat di Arsip Saya</a><button class="btn btn-ghost" id="ws-lagi">Terbitkan Lagi</button></div>
+    </div>
+  </section>
+
+  <!-- ============ ARSIP ============ -->
+  <section class="view hidden" id="view-arsip">
+    <div class="page-head">
+      <h2>Arsip Saya</h2>
+      <p>Semua lisensi yang pernah kamu terbitkan di perangkat ini.</p>
+    </div>
+    <div class="arsip-list" id="arsip-list"></div>
+    <div class="arsip-empty hidden" id="arsip-empty">
+      <div class="arsip-empty-seal" id="arsip-empty-seal"></div>
+      <div class="arsip-empty-title">Arsip masih kosong</div>
+      <div class="arsip-empty-sub">Terbitkan lisensi pertamamu — Fakultas menunggu.</div>
+      <a class="btn btn-gold" href="#/terbit">Terbitkan Sekarang</a>
+    </div>
+  </section>
+
+  <!-- ============ BUAT KARAKTER ============ -->
+  <section class="view hidden" id="view-buat">
+    <div class="page-head">
+      <h2>Usul Karakter Baru</h2>
+      <p>Rancang karaktermu sendiri. Karakter buatan warga bertanda khusus dan tetap diakui Fakultas.</p>
+    </div>
+    <div class="form-grid wide">
+      <label>Nama karakter
+        <input type="text" id="c-nama" placeholder="mis. Garuda Garisbawahi" autocomplete="off">
+      </label>
+      <label>Fakultas
+        <input type="text" id="c-fakultas" placeholder="mis. Fakultas Gambar" autocomplete="off">
+      </label>
+      <label>Jenis lisensi
+        <select id="c-sifat">
+          <option value="permisif">Permisif — bebas pakai, kredit cukup disebut</option>
+          <option value="copyleft">Copyleft — turunan wajib terbuka</option>
+          <option value="komersial-terbatas">Komersial Terbatas — untuk komersial perlu izin</option>
+        </select>
+      </label>
+      <label>Warna emblem
+        <input type="color" id="c-warna" value="#8a6b2f">
+      </label>
+      <label class="full">Arti &amp; filosofi karakter
+        <textarea id="c-arti" rows="2" placeholder="Satu paraghraf: siapa dia dan apa amanatnya."></textarea>
+      </label>
+      <label class="full">Aturan lisensi (satu baris satu aturan)
+        <textarea id="c-aturan" rows="4" placeholder="Bebas pakai untuk apa pun.&#10;Kredit kepada pembuat asli wajib dilestarikan.&#10;Dilarang menghapus lisensi ini dari karya."></textarea>
+      </label>
+    </div>
+    <div class="ws-actions">
+      <button class="btn btn-gold" id="c-simpan">Usulkan Karakter</button>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <span>FLK — Fakultas Lisensi Kreatif</span>
+  <span class="footer-dot">·</span>
+  <span>Lisensi FLK adalah karya seni-hukum fiksi, bukan nasihat hukum.</span>
+  <span class="footer-dot">·</span>
+  <span>© 2026 CPM.qmage</span>
+</footer>
+
+<div class="toast hidden" id="toast"></div>
+
+<script src="app.js"></script>
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => navigator.serviceWorker.register('sw.js'));
+  }
+</script>
+</body>
+</html>
